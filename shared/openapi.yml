@@ -1,0 +1,243 @@
+openapi: 3.0.3
+info:
+  title: Geo Tracker API
+  description: iOS端末から位置情報を定期的に送信し記録するシステムのAPI
+  version: 1.0.0
+  contact:
+    name: Geo Tracker Support
+servers:
+  - url: http://localhost:8000/v1
+    description: Local development server
+  - url: https://api.geo-tracker.example.com/v1
+    description: Production server
+security:
+  - ApiKeyAuth: []
+paths:
+  /locations/batch:
+    post:
+      summary: 位置情報のバッチ送信
+      description: 複数の位置情報を一括で送信します。単一の位置情報を送信する場合も、配列に1つだけ含めて送信してください。
+      operationId: postLocationsBatch
+      tags:
+        - Locations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationBatch'
+            examples:
+              single:
+                summary: 単一の位置情報
+                value:
+                  device_id: "550e8400-e29b-41d4-a716-446655440000"
+                  device_info:
+                    model: "iPhone14,2"
+                    os_version: "iOS 17.0"
+                  locations:
+                    - latitude: 35.6812
+                      longitude: 139.7671
+                      accuracy: 5.0
+                      timestamp: "2024-01-15T10:30:00Z"
+                      altitude: 45.2
+                      speed: 1.5
+                      heading: 180.0
+                      battery_level: 0.85
+                      activity_type: "walking"
+              multiple:
+                summary: 複数の位置情報
+                value:
+                  device_id: "550e8400-e29b-41d4-a716-446655440000"
+                  locations:
+                    - latitude: 35.6812
+                      longitude: 139.7671
+                      accuracy: 5.0
+                      timestamp: "2024-01-15T10:30:00Z"
+                    - latitude: 35.6813
+                      longitude: 139.7672
+                      accuracy: 10.0
+                      timestamp: "2024-01-15T10:31:00Z"
+      responses:
+        '201':
+          description: 位置情報が正常に記録されました
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Successfully recorded 2 locations"
+                  received_count:
+                    type: integer
+                    example: 2
+        '400':
+          description: リクエストが不正です
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /health:
+    get:
+      summary: ヘルスチェック
+      description: APIサーバーの稼働状態を確認します
+      operationId: getHealth
+      tags:
+        - System
+      security: []
+      responses:
+        '200':
+          description: サーバーは正常に稼働しています
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "healthy"
+                  timestamp:
+                    type: string
+                    format: date-time
+                    example: "2024-01-15T10:30:00Z"
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: APIアクセス用の認証キー
+  schemas:
+    Location:
+      type: object
+      required:
+        - latitude
+        - longitude
+        - timestamp
+      properties:
+        latitude:
+          type: number
+          format: double
+          minimum: -90
+          maximum: 90
+          description: 緯度
+          example: 35.6812
+        longitude:
+          type: number
+          format: double
+          minimum: -180
+          maximum: 180
+          description: 経度
+          example: 139.7671
+        accuracy:
+          type: number
+          format: float
+          minimum: 0
+          description: 位置精度（メートル）
+          example: 5.0
+        timestamp:
+          type: string
+          format: date-time
+          description: 記録時刻（ISO 8601形式）
+          example: "2024-01-15T10:30:00Z"
+        altitude:
+          type: number
+          format: double
+          description: 高度（メートル）
+          example: 45.2
+        speed:
+          type: number
+          format: float
+          minimum: 0
+          description: 速度（メートル/秒）
+          example: 1.5
+        heading:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 360
+          description: 方角（度、0-360）
+          example: 180.0
+        battery_level:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: バッテリー残量（0.0-1.0）
+          example: 0.85
+        activity_type:
+          type: string
+          enum:
+            - unknown
+            - stationary
+            - walking
+            - running
+            - automotive
+            - cycling
+          description: 移動手段
+          example: "walking"
+    DeviceInfo:
+      type: object
+      properties:
+        model:
+          type: string
+          description: デバイスモデル
+          example: "iPhone14,2"
+        os_version:
+          type: string
+          description: OSバージョン
+          example: "iOS 17.0"
+    LocationBatch:
+      type: object
+      required:
+        - device_id
+        - locations
+      properties:
+        device_id:
+          type: string
+          format: uuid
+          description: デバイス識別子（UUID形式）
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        device_info:
+          $ref: '#/components/schemas/DeviceInfo'
+        locations:
+          type: array
+          minItems: 1
+          maxItems: 1000
+          items:
+            $ref: '#/components/schemas/Location'
+          description: 位置情報の配列
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: エラーコード
+          example: "INVALID_REQUEST"
+        message:
+          type: string
+          description: エラーメッセージ
+          example: "Invalid latitude value"
+        details:
+          type: object
+          description: 詳細なエラー情報
+tags:
+  - name: Locations
+    description: 位置情報の送信
+  - name: System
+    description: システム関連
