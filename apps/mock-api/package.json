@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "ts-node src/index.ts",
     "test": "jest",
+    "typecheck": "tsc --noEmit",
     "generate:types": "openapi-typescript ../../shared/openapi.yml -o src/types/api.ts"
   },
   "dependencies": {
