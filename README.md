@@ -20,7 +20,7 @@
 - 2. モック API サーバー作成: mock-api/
   - DB なし、受信データをログ出力
   - TypeScript + Node.js
-  - スキーマ駆動開発、openapi定義からコード自動生成
+  - スキーマ駆動開発：openapi-typescriptで型情報を最初に生成し、それを活用して開発を行う
 - 3. ダミー位置情報送信クライアント作成: mock-client/
   - モック API と結合テスト
 - 4. 実機 iOS アプリで位置情報を定期取得・送信: ios/
