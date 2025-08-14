@@ -3,7 +3,7 @@
 
 ## Development Approach
 - ステップバイステップで、t_wadaが推奨するTDDによる実装を行う
-    - Red phase でコミットする
+    - Red phase, green phase の区切りでそれぞれコミットする
 
 ## Package Management
 - JavaScript開発ではpnpmを使う
