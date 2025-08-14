@@ -19,7 +19,7 @@
   - 最低限：Ingestion API（データの取り込み）
 - 2. モック API サーバー作成: mock-api/
   - DB なし、受信データをログ出力
-  - Python + FastAPI
+  - TypeScript + Node.js
   - スキーマ駆動開発、openapi定義からコード自動生成
 - 3. ダミー位置情報送信クライアント作成: mock-client/
   - モック API と結合テスト
