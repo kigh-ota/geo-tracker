@@ -13,20 +13,35 @@ class LocationTracker: NSObject {
     private(set) var isTracking = false
     weak var delegate: LocationTrackerDelegate?
     
+    var isBackgroundLocationUpdatesEnabled: Bool {
+        return locationManager.allowsBackgroundLocationUpdates
+    }
+    
     override init() {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        // バックグラウンド位置情報は一時的に無効化（権限設定のため）
-        // locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.distanceFilter = 10 // 10メートル移動するごとに更新
+    }
+    
+    func enableBackgroundLocationUpdates() {
+        // Background Modesが設定されている場合のみ有効化
+        guard Bundle.main.object(forInfoDictionaryKey: "UIBackgroundModes") as? [String] != nil else {
+            print("Background Modes not configured")
+            return
+        }
+        locationManager.allowsBackgroundLocationUpdates = true
     }
     
     func startTracking() {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         isTracking = true
+    }
+    
+    func requestBackgroundLocationAuthorization() {
+        locationManager.requestAlwaysAuthorization()
     }
     
     func stopTracking() {
@@ -61,10 +76,18 @@ extension LocationTracker: CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-        case .authorizedAlways, .authorizedWhenInUse:
+        case .authorizedAlways:
+            // バックグラウンド位置取得が許可された場合
             if isTracking {
                 locationManager.startUpdatingLocation()
             }
+            delegate?.locationTracker(self, didUpdateAuthorizationStatus: .authorizedAlways)
+        case .authorizedWhenInUse:
+            // フォアグラウンドのみの許可
+            if isTracking {
+                locationManager.startUpdatingLocation()
+            }
+            delegate?.locationTracker(self, didUpdateAuthorizationStatus: .authorizedWhenInUse)
         case .denied, .restricted:
             delegate?.locationTracker(self, didFailWithError: LocationError.authorizationDenied)
         case .notDetermined:
@@ -89,4 +112,5 @@ enum LocationError: LocalizedError {
 protocol LocationTrackerDelegate: AnyObject {
     func locationTracker(_ tracker: LocationTracker, didUpdateLocation location: CLLocation)
     func locationTracker(_ tracker: LocationTracker, didFailWithError error: Error)
+    func locationTracker(_ tracker: LocationTracker, didUpdateAuthorizationStatus status: CLAuthorizationStatus)
 }

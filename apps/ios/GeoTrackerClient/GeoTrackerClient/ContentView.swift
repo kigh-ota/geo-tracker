@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var lastLocation: CLLocation?
     @State private var locationTracker = LocationTracker()
     @State private var locationEventHandler: LocationEventHandler?
+    @State private var authorizationStatus: CLAuthorizationStatus = .notDetermined
     
     var body: some View {
         VStack(spacing: 30) {
@@ -25,13 +26,30 @@ struct ContentView: View {
                 .font(.title2)
                 .foregroundColor(isTracking ? .green : .gray)
             
-            Button(action: toggleTracking) {
-                Text(isTracking ? "停止" : "開始")
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .frame(width: 200, height: 60)
-                    .background(isTracking ? Color.red : Color.blue)
-                    .cornerRadius(30)
+            VStack(spacing: 20) {
+                Button(action: toggleTracking) {
+                    Text(isTracking ? "停止" : "開始")
+                        .font(.title)
+                        .foregroundColor(.white)
+                        .frame(width: 200, height: 60)
+                        .background(isTracking ? Color.red : Color.blue)
+                        .cornerRadius(30)
+                }
+                
+                if authorizationStatus == .authorizedWhenInUse {
+                    Button(action: requestBackgroundAuthorization) {
+                        Text("バックグラウンド許可を要求")
+                            .font(.body)
+                            .foregroundColor(.white)
+                            .frame(width: 220, height: 50)
+                            .background(Color.orange)
+                            .cornerRadius(25)
+                    }
+                }
+                
+                Text(authorizationStatusText)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
             }
             
             if let location = lastLocation {
@@ -86,6 +104,9 @@ struct ContentView: View {
                 },
                 onError: { error in
                     statusMessage = "エラー: \(error.localizedDescription)"
+                },
+                onAuthorizationStatusUpdate: { status in
+                    authorizationStatus = status
                 }
             )
             locationTracker.delegate = locationEventHandler
@@ -103,6 +124,28 @@ struct ContentView: View {
         isTracking.toggle()
     }
     
+    private func requestBackgroundAuthorization() {
+        locationTracker.enableBackgroundLocationUpdates()
+        locationTracker.requestBackgroundLocationAuthorization()
+    }
+    
+    private var authorizationStatusText: String {
+        switch authorizationStatus {
+        case .notDetermined:
+            return "位置情報許可: 未決定"
+        case .denied:
+            return "位置情報許可: 拒否"
+        case .restricted:
+            return "位置情報許可: 制限"
+        case .authorizedWhenInUse:
+            return "位置情報許可: アプリ使用中のみ"
+        case .authorizedAlways:
+            return "位置情報許可: 常時許可（バックグラウンド対応）"
+        @unknown default:
+            return "位置情報許可: 不明"
+        }
+    }
+    
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.timeStyle = .medium
@@ -113,10 +156,14 @@ struct ContentView: View {
 class LocationEventHandler: LocationTrackerDelegate {
     let onLocationUpdate: (CLLocation) -> Void
     let onError: (Error) -> Void
+    let onAuthorizationStatusUpdate: (CLAuthorizationStatus) -> Void
     
-    init(onLocationUpdate: @escaping (CLLocation) -> Void, onError: @escaping (Error) -> Void) {
+    init(onLocationUpdate: @escaping (CLLocation) -> Void, 
+         onError: @escaping (Error) -> Void,
+         onAuthorizationStatusUpdate: @escaping (CLAuthorizationStatus) -> Void) {
         self.onLocationUpdate = onLocationUpdate
         self.onError = onError
+        self.onAuthorizationStatusUpdate = onAuthorizationStatusUpdate
     }
     
     func locationTracker(_ tracker: LocationTracker, didUpdateLocation location: CLLocation) {
@@ -125,6 +172,10 @@ class LocationEventHandler: LocationTrackerDelegate {
     
     func locationTracker(_ tracker: LocationTracker, didFailWithError error: Error) {
         onError(error)
+    }
+    
+    func locationTracker(_ tracker: LocationTracker, didUpdateAuthorizationStatus status: CLAuthorizationStatus) {
+        onAuthorizationStatusUpdate(status)
     }
 }
 

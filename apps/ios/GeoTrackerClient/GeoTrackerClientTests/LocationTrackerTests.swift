@@ -53,11 +53,27 @@ final class LocationTrackerTests: XCTestCase {
             func locationTracker(_ tracker: LocationTracker, didFailWithError error: Error) {
                 // エラー処理
             }
+            
+            func locationTracker(_ tracker: LocationTracker, didUpdateAuthorizationStatus status: CLAuthorizationStatus) {
+                // 権限状態変更処理
+            }
         }
         
         let mockDelegate = MockDelegate()
         sut.delegate = mockDelegate
         
         XCTAssertNotNil(sut.delegate)
+    }
+    
+    // Red Phase: バックグラウンド位置取得対応のテスト
+    func test_requestBackgroundLocationAuthorizationメソッドが存在する() {
+        // このテストはrequestBackgroundLocationAuthorizationメソッドがまだ実装されていないため失敗する
+        XCTAssertNoThrow(sut.requestBackgroundLocationAuthorization())
+    }
+    
+    func test_enableBackgroundLocationUpdatesメソッドが存在する() {
+        // テスト環境ではCLLocationManagerのallowsBackgroundLocationUpdatesを設定できないため、
+        // メソッドの存在とクラッシュしないことのみをテスト
+        XCTAssertNoThrow(sut.enableBackgroundLocationUpdates())
     }
 }

@@ -54,12 +54,20 @@
 			);
 			target = 8435648F2E4E224D009021B7 /* GeoTrackerClientTests */;
 		};
+		84762D1A2E5058110007C045 /* Exceptions for "GeoTrackerClient" folder in "GeoTrackerClient" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 843564822E4E224C009021B7 /* GeoTrackerClient */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		843564852E4E224C009021B7 /* GeoTrackerClient */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				84762D1A2E5058110007C045 /* Exceptions for "GeoTrackerClient" folder in "GeoTrackerClient" target */,
 				84762C822E4F6BDB0007C045 /* Exceptions for "GeoTrackerClient" folder in "GeoTrackerClientTests" target */,
 			);
 			path = GeoTrackerClient;
@@ -469,6 +477,7 @@
 				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GeoTrackerClient/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "位置情報を継続的に記録し、サーバーに送信するためにバックグラウンドでの位置情報取得が必要です。";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を記録し、サーバーに送信するために使用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -499,6 +508,7 @@
 				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GeoTrackerClient/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "位置情報を継続的に記録し、サーバーに送信するためにバックグラウンドでの位置情報取得が必要です。";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を記録し、サーバーに送信するために使用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

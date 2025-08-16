@@ -6,3 +6,6 @@
 
 ## Collaboration Guidelines
 - XcodeのGUI操作で解決できることは私が操作して解決するので、操作を渡すこと
+
+## Project Configuration
+- Info.plistはプロジェクト設定から自動生成しているので、変更時は私に依頼して
