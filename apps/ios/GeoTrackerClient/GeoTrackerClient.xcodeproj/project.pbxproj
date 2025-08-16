@@ -1,0 +1,720 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84762C692E4F5E100007C045 /* openapi.yml in Sources */ = {isa = PBXBuildFile; fileRef = 84762C682E4F5E100007C045 /* openapi.yml */; };
+		84762C6B2E4F5E210007C045 /* openapi-generator-config.yml in Sources */ = {isa = PBXBuildFile; fileRef = 84762C6A2E4F5E190007C045 /* openapi-generator-config.yml */; };
+		84762C6F2E4F5F220007C045 /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 84762C6E2E4F5F220007C045 /* OpenAPIRuntime */; };
+		84762C722E4F5F2C0007C045 /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 84762C712E4F5F2C0007C045 /* OpenAPIURLSession */; };
+		84762CD82E5036F80007C045 /* openapi-generator-config.yml in Sources */ = {isa = PBXBuildFile; fileRef = 84762C6A2E4F5E190007C045 /* openapi-generator-config.yml */; };
+		84762CDA2E5036FD0007C045 /* openapi.yml in Sources */ = {isa = PBXBuildFile; fileRef = 84762C682E4F5E100007C045 /* openapi.yml */; };
+		84762CDE2E5037090007C045 /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 84762CDD2E5037090007C045 /* OpenAPIRuntime */; };
+		84762CE02E5037090007C045 /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 84762CDF2E5037090007C045 /* OpenAPIURLSession */; };
+		84762CEC2E503A440007C045 /* HTTPTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 84762CEB2E503A440007C045 /* HTTPTypes */; };
+		84762CEE2E503A480007C045 /* HTTPTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 84762CED2E503A480007C045 /* HTTPTypes */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		843564912E4E224D009021B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8435647B2E4E224C009021B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 843564822E4E224C009021B7;
+			remoteInfo = GeoTrackerClient;
+		};
+		8435649B2E4E224D009021B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8435647B2E4E224C009021B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 843564822E4E224C009021B7;
+			remoteInfo = GeoTrackerClient;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		843564832E4E224C009021B7 /* GeoTrackerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoTrackerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		843564902E4E224D009021B7 /* GeoTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8435649A2E4E224D009021B7 /* GeoTrackerClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoTrackerClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84762C682E4F5E100007C045 /* openapi.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = openapi.yml; path = ../../../shared/openapi.yml; sourceTree = "<group>"; };
+		84762C6A2E4F5E190007C045 /* openapi-generator-config.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "openapi-generator-config.yml"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		84762C822E4F6BDB0007C045 /* Exceptions for "GeoTrackerClient" folder in "GeoTrackerClientTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				APIService.swift,
+				LocationDataMapper.swift,
+				LocationTracker.swift,
+			);
+			target = 8435648F2E4E224D009021B7 /* GeoTrackerClientTests */;
+		};
+		84762D1A2E5058110007C045 /* Exceptions for "GeoTrackerClient" folder in "GeoTrackerClient" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 843564822E4E224C009021B7 /* GeoTrackerClient */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		843564852E4E224C009021B7 /* GeoTrackerClient */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				84762D1A2E5058110007C045 /* Exceptions for "GeoTrackerClient" folder in "GeoTrackerClient" target */,
+				84762C822E4F6BDB0007C045 /* Exceptions for "GeoTrackerClient" folder in "GeoTrackerClientTests" target */,
+			);
+			path = GeoTrackerClient;
+			sourceTree = "<group>";
+		};
+		843564932E4E224D009021B7 /* GeoTrackerClientTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GeoTrackerClientTests;
+			sourceTree = "<group>";
+		};
+		8435649D2E4E224D009021B7 /* GeoTrackerClientUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GeoTrackerClientUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		843564802E4E224C009021B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84762CEC2E503A440007C045 /* HTTPTypes in Frameworks */,
+				84762C722E4F5F2C0007C045 /* OpenAPIURLSession in Frameworks */,
+				84762C6F2E4F5F220007C045 /* OpenAPIRuntime in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8435648D2E4E224D009021B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84762CEE2E503A480007C045 /* HTTPTypes in Frameworks */,
+				84762CE02E5037090007C045 /* OpenAPIURLSession in Frameworks */,
+				84762CDE2E5037090007C045 /* OpenAPIRuntime in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		843564972E4E224D009021B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8435647A2E4E224C009021B7 = {
+			isa = PBXGroup;
+			children = (
+				84762C6A2E4F5E190007C045 /* openapi-generator-config.yml */,
+				84762C682E4F5E100007C045 /* openapi.yml */,
+				843564852E4E224C009021B7 /* GeoTrackerClient */,
+				843564932E4E224D009021B7 /* GeoTrackerClientTests */,
+				8435649D2E4E224D009021B7 /* GeoTrackerClientUITests */,
+				84762CDC2E5037090007C045 /* Frameworks */,
+				843564842E4E224C009021B7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		843564842E4E224C009021B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				843564832E4E224C009021B7 /* GeoTrackerClient.app */,
+				843564902E4E224D009021B7 /* GeoTrackerClientTests.xctest */,
+				8435649A2E4E224D009021B7 /* GeoTrackerClientUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84762CDC2E5037090007C045 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		843564822E4E224C009021B7 /* GeoTrackerClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 843564A42E4E224E009021B7 /* Build configuration list for PBXNativeTarget "GeoTrackerClient" */;
+			buildPhases = (
+				8435647F2E4E224C009021B7 /* Sources */,
+				843564802E4E224C009021B7 /* Frameworks */,
+				843564812E4E224C009021B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84762C742E4F5FE70007C045 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				843564852E4E224C009021B7 /* GeoTrackerClient */,
+			);
+			name = GeoTrackerClient;
+			packageProductDependencies = (
+				84762C6E2E4F5F220007C045 /* OpenAPIRuntime */,
+				84762C712E4F5F2C0007C045 /* OpenAPIURLSession */,
+				84762CEB2E503A440007C045 /* HTTPTypes */,
+			);
+			productName = GeoTrackerClient;
+			productReference = 843564832E4E224C009021B7 /* GeoTrackerClient.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8435648F2E4E224D009021B7 /* GeoTrackerClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 843564A72E4E224E009021B7 /* Build configuration list for PBXNativeTarget "GeoTrackerClientTests" */;
+			buildPhases = (
+				8435648C2E4E224D009021B7 /* Sources */,
+				8435648D2E4E224D009021B7 /* Frameworks */,
+				8435648E2E4E224D009021B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84762CE22E50370E0007C045 /* PBXTargetDependency */,
+				843564922E4E224D009021B7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				843564932E4E224D009021B7 /* GeoTrackerClientTests */,
+			);
+			name = GeoTrackerClientTests;
+			packageProductDependencies = (
+				84762CDD2E5037090007C045 /* OpenAPIRuntime */,
+				84762CDF2E5037090007C045 /* OpenAPIURLSession */,
+				84762CED2E503A480007C045 /* HTTPTypes */,
+			);
+			productName = GeoTrackerClientTests;
+			productReference = 843564902E4E224D009021B7 /* GeoTrackerClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		843564992E4E224D009021B7 /* GeoTrackerClientUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 843564AA2E4E224E009021B7 /* Build configuration list for PBXNativeTarget "GeoTrackerClientUITests" */;
+			buildPhases = (
+				843564962E4E224D009021B7 /* Sources */,
+				843564972E4E224D009021B7 /* Frameworks */,
+				843564982E4E224D009021B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8435649C2E4E224D009021B7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8435649D2E4E224D009021B7 /* GeoTrackerClientUITests */,
+			);
+			name = GeoTrackerClientUITests;
+			packageProductDependencies = (
+			);
+			productName = GeoTrackerClientUITests;
+			productReference = 8435649A2E4E224D009021B7 /* GeoTrackerClientUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8435647B2E4E224C009021B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					843564822E4E224C009021B7 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					8435648F2E4E224D009021B7 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					843564992E4E224D009021B7 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 843564822E4E224C009021B7;
+					};
+				};
+			};
+			buildConfigurationList = 8435647E2E4E224C009021B7 /* Build configuration list for PBXProject "GeoTrackerClient" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8435647A2E4E224C009021B7;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				84762C6C2E4F5F0B0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-generator" */,
+				84762C6D2E4F5F220007C045 /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */,
+				84762C702E4F5F2C0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */,
+				84762CEA2E503A2C0007C045 /* XCRemoteSwiftPackageReference "swift-http-types" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 843564842E4E224C009021B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				843564822E4E224C009021B7 /* GeoTrackerClient */,
+				8435648F2E4E224D009021B7 /* GeoTrackerClientTests */,
+				843564992E4E224D009021B7 /* GeoTrackerClientUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		843564812E4E224C009021B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8435648E2E4E224D009021B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		843564982E4E224D009021B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8435647F2E4E224C009021B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84762C6B2E4F5E210007C045 /* openapi-generator-config.yml in Sources */,
+				84762C692E4F5E100007C045 /* openapi.yml in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8435648C2E4E224D009021B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84762CDA2E5036FD0007C045 /* openapi.yml in Sources */,
+				84762CD82E5036F80007C045 /* openapi-generator-config.yml in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		843564962E4E224D009021B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		843564922E4E224D009021B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 843564822E4E224C009021B7 /* GeoTrackerClient */;
+			targetProxy = 843564912E4E224D009021B7 /* PBXContainerItemProxy */;
+		};
+		8435649C2E4E224D009021B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 843564822E4E224C009021B7 /* GeoTrackerClient */;
+			targetProxy = 8435649B2E4E224D009021B7 /* PBXContainerItemProxy */;
+		};
+		84762C742E4F5FE70007C045 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 84762C732E4F5FE70007C045 /* OpenAPIGenerator */;
+		};
+		84762CE22E50370E0007C045 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 84762CE12E50370E0007C045 /* OpenAPIGenerator */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		843564A22E4E224E009021B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		843564A32E4E224E009021B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		843564A52E4E224E009021B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GeoTrackerClient/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "位置情報を継続的に記録し、サーバーに送信するためにバックグラウンドでの位置情報取得が必要です。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を記録し、サーバーに送信するために使用します。";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClient";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		843564A62E4E224E009021B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GeoTrackerClient/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "位置情報を継続的に記録し、サーバーに送信するためにバックグラウンドでの位置情報取得が必要です。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を記録し、サーバーに送信するために使用します。";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClient";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		843564A82E4E224E009021B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		843564A92E4E224E009021B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		843564AB2E4E224E009021B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClientUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GeoTrackerClient;
+			};
+			name = Debug;
+		};
+		843564AC2E4E224E009021B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClientUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GeoTrackerClient;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8435647E2E4E224C009021B7 /* Build configuration list for PBXProject "GeoTrackerClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843564A22E4E224E009021B7 /* Debug */,
+				843564A32E4E224E009021B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		843564A42E4E224E009021B7 /* Build configuration list for PBXNativeTarget "GeoTrackerClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843564A52E4E224E009021B7 /* Debug */,
+				843564A62E4E224E009021B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		843564A72E4E224E009021B7 /* Build configuration list for PBXNativeTarget "GeoTrackerClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843564A82E4E224E009021B7 /* Debug */,
+				843564A92E4E224E009021B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		843564AA2E4E224E009021B7 /* Build configuration list for PBXNativeTarget "GeoTrackerClientUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843564AB2E4E224E009021B7 /* Debug */,
+				843564AC2E4E224E009021B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84762C6C2E4F5F0B0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-generator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-generator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.2;
+			};
+		};
+		84762C6D2E4F5F220007C045 /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-runtime";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
+			};
+		};
+		84762C702E4F5F2C0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-urlsession";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		84762CEA2E503A2C0007C045 /* XCRemoteSwiftPackageReference "swift-http-types" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-http-types";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84762C6E2E4F5F220007C045 /* OpenAPIRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762C6D2E4F5F220007C045 /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */;
+			productName = OpenAPIRuntime;
+		};
+		84762C712E4F5F2C0007C045 /* OpenAPIURLSession */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762C702E4F5F2C0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */;
+			productName = OpenAPIURLSession;
+		};
+		84762C732E4F5FE70007C045 /* OpenAPIGenerator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762C6C2E4F5F0B0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-generator" */;
+			productName = "plugin:OpenAPIGenerator";
+		};
+		84762CDD2E5037090007C045 /* OpenAPIRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762C6D2E4F5F220007C045 /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */;
+			productName = OpenAPIRuntime;
+		};
+		84762CDF2E5037090007C045 /* OpenAPIURLSession */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762C702E4F5F2C0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */;
+			productName = OpenAPIURLSession;
+		};
+		84762CE12E50370E0007C045 /* OpenAPIGenerator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762C6C2E4F5F0B0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-generator" */;
+			productName = "plugin:OpenAPIGenerator";
+		};
+		84762CEB2E503A440007C045 /* HTTPTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762CEA2E503A2C0007C045 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypes;
+		};
+		84762CED2E503A480007C045 /* HTTPTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762CEA2E503A2C0007C045 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypes;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 8435647B2E4E224C009021B7 /* Project object */;
+}
