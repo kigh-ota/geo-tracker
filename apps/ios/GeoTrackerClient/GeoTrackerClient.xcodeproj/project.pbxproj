@@ -40,7 +40,7 @@
 		843564832E4E224C009021B7 /* GeoTrackerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoTrackerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		843564902E4E224D009021B7 /* GeoTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8435649A2E4E224D009021B7 /* GeoTrackerClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoTrackerClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		84762C682E4F5E100007C045 /* openapi.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = openapi.yml; path = "/Users/kaiichiro/ghq/github.com/kigh-ota/geo-tracker/shared/openapi.yml"; sourceTree = "<absolute>"; };
+		84762C682E4F5E100007C045 /* openapi.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = openapi.yml; path = ../../../shared/openapi.yml; sourceTree = "<group>"; };
 		84762C6A2E4F5E190007C045 /* openapi-generator-config.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "openapi-generator-config.yml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

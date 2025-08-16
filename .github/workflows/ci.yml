@@ -1,4 +1,4 @@
-name: CI
+name: Full CI
 
 on:
   push:
@@ -7,45 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
-    
-    defaults:
-      run:
-        working-directory: apps/mock-api
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v4
-      with:
-        version: latest
-    
-    - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-        cache-dependency-path: apps/mock-api/pnpm-lock.yaml
-    
-    - name: Install dependencies
-      run: pnpm install
-    
-    - name: Generate types and check for changes
-      run: |
-        pnpm run generate:types
-        if ! git diff --exit-code src/types/api.ts; then
-          echo "Generated types differ from committed types. Please run 'pnpm run generate:types' and commit the changes."
-          exit 1
-        fi
-    
-    - name: Run type check
-      run: pnpm run typecheck
-    
-    - name: Run tests
-      run: pnpm test
+  mock-api:
+    uses: ./.github/workflows/mock-api.yml
+  
+  ios:
+    uses: ./.github/workflows/ios.yml
