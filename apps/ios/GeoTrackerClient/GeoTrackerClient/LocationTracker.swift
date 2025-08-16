@@ -35,9 +35,20 @@ class LocationTracker: NSObject {
     }
     
     func startTracking() {
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
         isTracking = true
+        
+        // 既に権限が許可されている場合は即座に開始
+        switch locationManager.authorizationStatus {
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            // 権限が確定してからlocationManagerDidChangeAuthorizationで位置取得を開始
+        case .denied, .restricted:
+            delegate?.locationTracker(self, didFailWithError: LocationError.authorizationDenied)
+        @unknown default:
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     func requestBackgroundLocationAuthorization() {

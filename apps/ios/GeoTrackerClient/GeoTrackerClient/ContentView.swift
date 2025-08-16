@@ -15,6 +15,8 @@ struct ContentView: View {
     @State private var locationTracker = LocationTracker()
     @State private var locationEventHandler: LocationEventHandler?
     @State private var authorizationStatus: CLAuthorizationStatus = .notDetermined
+    @State private var logEntries: [LogEntry] = []
+    private let maxLogEntries = 50
     
     var body: some View {
         VStack(spacing: 30) {
@@ -66,6 +68,40 @@ struct ContentView: View {
                 .cornerRadius(10)
             }
             
+            // 送信履歴ログ
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    Text("送信履歴")
+                        .font(.headline)
+                    Spacer()
+                    if !logEntries.isEmpty {
+                        Button("クリア") {
+                            logEntries.removeAll()
+                        }
+                        .font(.caption)
+                        .foregroundColor(.red)
+                    }
+                }
+                
+                if logEntries.isEmpty {
+                    Text("履歴なし")
+                        .foregroundColor(.secondary)
+                        .font(.caption)
+                } else {
+                    ScrollView {
+                        LazyVStack(alignment: .leading, spacing: 5) {
+                            ForEach(logEntries) { entry in
+                                LogEntryView(entry: entry)
+                            }
+                        }
+                    }
+                    .frame(maxHeight: 200)
+                }
+            }
+            .padding()
+            .background(Color.gray.opacity(0.05))
+            .cornerRadius(10)
+            
             Spacer()
         }
         .padding()
@@ -92,6 +128,14 @@ struct ContentView: View {
                             
                             let batch = locationDataMapper.createBatch(from: [location])
                             let success = try await apiService.sendLocationBatch(batch)
+                            
+                            // ログエントリを追加
+                            let logEntry = LogEntry(
+                                location: location,
+                                status: success ? .success : .failure(APIError.invalidResponse)
+                            )
+                            addLogEntry(logEntry)
+                            
                             if success {
                                 print("位置情報の送信に成功しました")
                             } else {
@@ -99,6 +143,12 @@ struct ContentView: View {
                             }
                         } catch {
                             print("API送信エラー: \(error)")
+                            // エラーログを追加
+                            let logEntry = LogEntry(
+                                location: location,
+                                status: .failure(error)
+                            )
+                            addLogEntry(logEntry)
                         }
                     }
                 },
@@ -151,6 +201,15 @@ struct ContentView: View {
         formatter.timeStyle = .medium
         return formatter.string(from: date)
     }
+    
+    private func addLogEntry(_ entry: LogEntry) {
+        logEntries.insert(entry, at: 0) // 新しいものを先頭に
+        
+        // 最大件数を超えたら古いものを削除
+        if logEntries.count > maxLogEntries {
+            logEntries.removeLast()
+        }
+    }
 }
 
 class LocationEventHandler: LocationTrackerDelegate {
@@ -176,6 +235,45 @@ class LocationEventHandler: LocationTrackerDelegate {
     
     func locationTracker(_ tracker: LocationTracker, didUpdateAuthorizationStatus status: CLAuthorizationStatus) {
         onAuthorizationStatusUpdate(status)
+    }
+}
+
+struct LogEntryView: View {
+    let entry: LogEntry
+    
+    var body: some View {
+        HStack(spacing: 8) {
+            // ステータスアイコン
+            Image(systemName: entry.status.isSuccess ? "checkmark.circle.fill" : "xmark.circle.fill")
+                .foregroundColor(entry.status.isSuccess ? .green : .red)
+                .font(.caption)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                HStack {
+                    Text(formatTime(entry.timestamp))
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                    
+                    Text(entry.status.displayMessage)
+                        .font(.caption)
+                        .foregroundColor(entry.status.isSuccess ? .green : .red)
+                }
+                
+                Text("(\(String(format: "%.4f", entry.location.coordinate.latitude)), \(String(format: "%.4f", entry.location.coordinate.longitude)))")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+        }
+        .padding(.vertical, 2)
+    }
+    
+    private func formatTime(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.dateStyle = .none
+        return formatter.string(from: date)
     }
 }
 
