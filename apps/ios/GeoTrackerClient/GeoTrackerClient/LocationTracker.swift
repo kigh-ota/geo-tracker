@@ -17,16 +17,14 @@ class LocationTracker: NSObject {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        // バックグラウンド位置情報更新は実機でのみ有効
-        #if !targetEnvironment(simulator)
-        locationManager.allowsBackgroundLocationUpdates = true
-        #endif
+        // バックグラウンド位置情報は一時的に無効化（権限設定のため）
+        // locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.distanceFilter = 10 // 10メートル移動するごとに更新
     }
     
     func startTracking() {
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         isTracking = true
     }

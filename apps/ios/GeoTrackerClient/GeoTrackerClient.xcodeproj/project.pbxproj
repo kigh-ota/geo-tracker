@@ -232,7 +232,6 @@
 					};
 					8435648F2E4E224D009021B7 = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 843564822E4E224C009021B7;
 					};
 					843564992E4E224D009021B7 = {
 						CreatedOnToolsVersion = 16.4;
@@ -523,7 +522,6 @@
 		843564A82E4E224E009021B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
@@ -535,14 +533,12 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoTrackerClient.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GeoTrackerClient";
 			};
 			name = Debug;
 		};
 		843564A92E4E224E009021B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
@@ -554,7 +550,6 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoTrackerClient.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GeoTrackerClient";
 			};
 			name = Release;
 		};

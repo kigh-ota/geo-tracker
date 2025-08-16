@@ -30,6 +30,11 @@ class APIService {
     
     /// 位置情報バッチをサーバーに送信
     func sendLocationBatch(_ batch: Components.Schemas.LocationBatch) async throws -> Bool {
+        print("DEBUG: APIService - Sending request to: \(serverURL)")
+        print("DEBUG: APIService - Endpoint: POST /locations/batch")
+        print("DEBUG: APIService - Device ID: \(batch.deviceId)")
+        print("DEBUG: APIService - Locations count: \(batch.locations.count)")
+        
         let input = Operations.PostLocationsBatch.Input(
             headers: .init(),
             body: .json(batch)
@@ -39,10 +44,19 @@ class APIService {
         
         switch response {
         case .created:
+            print("DEBUG: APIService - Success: 201 Created")
             return true
-        case .badRequest, .unauthorized, .internalServerError:
+        case .badRequest:
+            print("DEBUG: APIService - Error: 400 Bad Request")
+            return false
+        case .unauthorized:
+            print("DEBUG: APIService - Error: 401 Unauthorized")
+            return false
+        case .internalServerError:
+            print("DEBUG: APIService - Error: 500 Internal Server Error")
             return false
         case .undocumented(statusCode: let statusCode, _):
+            print("DEBUG: APIService - Error: Unexpected status code \(statusCode)")
             throw APIError.unexpectedStatusCode(statusCode)
         }
     }

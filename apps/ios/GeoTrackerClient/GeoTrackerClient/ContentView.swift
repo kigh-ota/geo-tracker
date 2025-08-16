@@ -60,9 +60,17 @@ struct ContentView: View {
                     // 位置情報をサーバーに送信
                     Task {
                         do {
-                            let deviceId = UUID().uuidString
+                            let deviceId: String
+                            if let vendorId = UIDevice.current.identifierForVendor?.uuidString {
+                                deviceId = vendorId
+                            } else {
+                                print("DEBUG: identifierForVendor is nil, using random UUID as fallback")
+                                deviceId = UUID().uuidString
+                            }
                             let locationDataMapper = LocationDataMapper(deviceId: deviceId)
-                            let apiService = APIService(serverURL: "http://localhost:8000/v1")
+                            let baseURL = ProcessInfo.processInfo.environment["API_SERVER_URL"] ?? "http://localhost:8000"
+                            let serverURL = "\(baseURL)/v1"
+                            let apiService = APIService(serverURL: serverURL)
                             
                             let batch = locationDataMapper.createBatch(from: [location])
                             let success = try await apiService.sendLocationBatch(batch)
