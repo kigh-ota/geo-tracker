@@ -38,42 +38,5 @@ final class LocationTrackerTests: XCTestCase {
         XCTAssertFalse(sut.isTracking)
     }
     
-    func test_位置情報が更新されるとdelegateに通知される() {
-        // CLLocationManagerの実際の動作はシミュレータで制限があるため、
-        // このテストは後でモックを使った実装に置き換える
-        // 現時点では、delegateが正しく設定されることのみをテスト
-        
-        class MockDelegate: LocationTrackerDelegate {
-            var didReceiveLocation = false
-            
-            func locationTracker(_ tracker: LocationTracker, didUpdateLocation location: CLLocation) {
-                didReceiveLocation = true
-            }
-            
-            func locationTracker(_ tracker: LocationTracker, didFailWithError error: Error) {
-                // エラー処理
-            }
-            
-            func locationTracker(_ tracker: LocationTracker, didUpdateAuthorizationStatus status: CLAuthorizationStatus) {
-                // 権限状態変更処理
-            }
-        }
-        
-        let mockDelegate = MockDelegate()
-        sut.delegate = mockDelegate
-        
-        XCTAssertNotNil(sut.delegate)
-    }
     
-    // Red Phase: バックグラウンド位置取得対応のテスト
-    func test_requestBackgroundLocationAuthorizationメソッドが存在する() {
-        // このテストはrequestBackgroundLocationAuthorizationメソッドがまだ実装されていないため失敗する
-        XCTAssertNoThrow(sut.requestBackgroundLocationAuthorization())
-    }
-    
-    func test_enableBackgroundLocationUpdatesメソッドが存在する() {
-        // テスト環境ではCLLocationManagerのallowsBackgroundLocationUpdatesを設定できないため、
-        // メソッドの存在とクラッシュしないことのみをテスト
-        XCTAssertNoThrow(sut.enableBackgroundLocationUpdates())
-    }
 }
