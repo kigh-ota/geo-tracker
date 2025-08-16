@@ -74,7 +74,7 @@ final class LocationDataMapperTests: XCTestCase {
     func test_デバイス情報を含むLocationBatchを作成できる() {
         // Given
         let location = CLLocation(latitude: 35.6812, longitude: 139.7671)
-        let deviceInfo = LocationDataMapper.DeviceInfo(
+        let deviceInfo = Components.Schemas.DeviceInfo(
             model: "iPhone14,2",
             osVersion: "iOS 17.0"
         )

@@ -11,6 +11,12 @@
 		84762C6B2E4F5E210007C045 /* openapi-generator-config.yml in Sources */ = {isa = PBXBuildFile; fileRef = 84762C6A2E4F5E190007C045 /* openapi-generator-config.yml */; };
 		84762C6F2E4F5F220007C045 /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 84762C6E2E4F5F220007C045 /* OpenAPIRuntime */; };
 		84762C722E4F5F2C0007C045 /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 84762C712E4F5F2C0007C045 /* OpenAPIURLSession */; };
+		84762CD82E5036F80007C045 /* openapi-generator-config.yml in Sources */ = {isa = PBXBuildFile; fileRef = 84762C6A2E4F5E190007C045 /* openapi-generator-config.yml */; };
+		84762CDA2E5036FD0007C045 /* openapi.yml in Sources */ = {isa = PBXBuildFile; fileRef = 84762C682E4F5E100007C045 /* openapi.yml */; };
+		84762CDE2E5037090007C045 /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 84762CDD2E5037090007C045 /* OpenAPIRuntime */; };
+		84762CE02E5037090007C045 /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 84762CDF2E5037090007C045 /* OpenAPIURLSession */; };
+		84762CEC2E503A440007C045 /* HTTPTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 84762CEB2E503A440007C045 /* HTTPTypes */; };
+		84762CEE2E503A480007C045 /* HTTPTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 84762CED2E503A480007C045 /* HTTPTypes */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +48,7 @@
 		84762C822E4F6BDB0007C045 /* Exceptions for "GeoTrackerClient" folder in "GeoTrackerClientTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				APIService.swift,
 				LocationDataMapper.swift,
 				LocationTracker.swift,
 			);
@@ -75,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84762CEC2E503A440007C045 /* HTTPTypes in Frameworks */,
 				84762C722E4F5F2C0007C045 /* OpenAPIURLSession in Frameworks */,
 				84762C6F2E4F5F220007C045 /* OpenAPIRuntime in Frameworks */,
 			);
@@ -84,6 +92,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84762CEE2E503A480007C045 /* HTTPTypes in Frameworks */,
+				84762CE02E5037090007C045 /* OpenAPIURLSession in Frameworks */,
+				84762CDE2E5037090007C045 /* OpenAPIRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +116,7 @@
 				843564852E4E224C009021B7 /* GeoTrackerClient */,
 				843564932E4E224D009021B7 /* GeoTrackerClientTests */,
 				8435649D2E4E224D009021B7 /* GeoTrackerClientUITests */,
+				84762CDC2E5037090007C045 /* Frameworks */,
 				843564842E4E224C009021B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,6 +129,13 @@
 				8435649A2E4E224D009021B7 /* GeoTrackerClientUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		84762CDC2E5037090007C045 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +161,7 @@
 			packageProductDependencies = (
 				84762C6E2E4F5F220007C045 /* OpenAPIRuntime */,
 				84762C712E4F5F2C0007C045 /* OpenAPIURLSession */,
+				84762CEB2E503A440007C045 /* HTTPTypes */,
 			);
 			productName = GeoTrackerClient;
 			productReference = 843564832E4E224C009021B7 /* GeoTrackerClient.app */;
@@ -158,6 +178,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				84762CE22E50370E0007C045 /* PBXTargetDependency */,
 				843564922E4E224D009021B7 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -165,6 +186,9 @@
 			);
 			name = GeoTrackerClientTests;
 			packageProductDependencies = (
+				84762CDD2E5037090007C045 /* OpenAPIRuntime */,
+				84762CDF2E5037090007C045 /* OpenAPIURLSession */,
+				84762CED2E503A480007C045 /* HTTPTypes */,
 			);
 			productName = GeoTrackerClientTests;
 			productReference = 843564902E4E224D009021B7 /* GeoTrackerClientTests.xctest */;
@@ -229,6 +253,7 @@
 				84762C6C2E4F5F0B0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-generator" */,
 				84762C6D2E4F5F220007C045 /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */,
 				84762C702E4F5F2C0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */,
+				84762CEA2E503A2C0007C045 /* XCRemoteSwiftPackageReference "swift-http-types" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 843564842E4E224C009021B7 /* Products */;
@@ -280,6 +305,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84762CDA2E5036FD0007C045 /* openapi.yml in Sources */,
+				84762CD82E5036F80007C045 /* openapi-generator-config.yml in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +333,10 @@
 		84762C742E4F5FE70007C045 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 84762C732E4F5FE70007C045 /* OpenAPIGenerator */;
+		};
+		84762CE22E50370E0007C045 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 84762CE12E50370E0007C045 /* OpenAPIGenerator */;
 		};
 /* End PBXTargetDependency section */
 
@@ -627,6 +658,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		84762CEA2E503A2C0007C045 /* XCRemoteSwiftPackageReference "swift-http-types" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-http-types";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -644,6 +683,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 84762C6C2E4F5F0B0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-generator" */;
 			productName = "plugin:OpenAPIGenerator";
+		};
+		84762CDD2E5037090007C045 /* OpenAPIRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762C6D2E4F5F220007C045 /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */;
+			productName = OpenAPIRuntime;
+		};
+		84762CDF2E5037090007C045 /* OpenAPIURLSession */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762C702E4F5F2C0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */;
+			productName = OpenAPIURLSession;
+		};
+		84762CE12E50370E0007C045 /* OpenAPIGenerator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762C6C2E4F5F0B0007C045 /* XCRemoteSwiftPackageReference "swift-openapi-generator" */;
+			productName = "plugin:OpenAPIGenerator";
+		};
+		84762CEB2E503A440007C045 /* HTTPTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762CEA2E503A2C0007C045 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypes;
+		};
+		84762CED2E503A480007C045 /* HTTPTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84762CEA2E503A2C0007C045 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypes;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

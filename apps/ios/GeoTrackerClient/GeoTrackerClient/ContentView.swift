@@ -56,6 +56,25 @@ struct ContentView: View {
                 onLocationUpdate: { location in
                     lastLocation = location
                     statusMessage = "位置情報取得中"
+                    
+                    // 位置情報をサーバーに送信
+                    Task {
+                        do {
+                            let deviceId = UUID().uuidString
+                            let locationDataMapper = LocationDataMapper(deviceId: deviceId)
+                            let apiService = APIService(serverURL: "http://localhost:8000/v1")
+                            
+                            let batch = locationDataMapper.createBatch(from: [location])
+                            let success = try await apiService.sendLocationBatch(batch)
+                            if success {
+                                print("位置情報の送信に成功しました")
+                            } else {
+                                print("位置情報の送信に失敗しました")
+                            }
+                        } catch {
+                            print("API送信エラー: \(error)")
+                        }
+                    }
                 },
                 onError: { error in
                     statusMessage = "エラー: \(error.localizedDescription)"
