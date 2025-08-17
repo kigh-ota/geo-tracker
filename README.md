@@ -20,15 +20,16 @@
 - 2. モック API サーバー作成: mock-api/
   - DB なし、受信データをログ出力
   - TypeScript + Node.js
-  - スキーマ駆動開発：openapi-typescriptで型情報を最初に生成し、それを活用して開発を行う
+  - スキーマ駆動開発：openapi-typescript で型情報を最初に生成し、それを活用して開発を行う
 - 3. 実機 iOS アプリで位置情報を定期取得・送信: ios/
   - Product Name: GeoTrackerClient
-  - スキーマ駆動開発：swift-openapi-generatorを使ってOpenAPI定義から自動生成したファイルを活用し、アプリ開発を行う
+  - スキーマ駆動開発：swift-openapi-generator を使って OpenAPI 定義から自動生成したファイルを活用し、アプリ開発を行う
   - ngrok でモック API をインターネット公開して結合テスト
 - 4. DB(PostgreSQL)対応 API サーバー作成: api/
-  - iOS アプリと結合テスト
+  - スキーマ駆動開発：openapi-typescript で型情報を最初に生成し、それを活用して開発を行う
+  - Supabase Edge Functions へのデプロイを想定した実装
 
-## iOSアプリ (/apps/ios)
+## iOS アプリ (/apps/ios)
 
 ### 機能
 
