@@ -19,7 +19,6 @@ Deno.serve(async (req: Request) => {
 
   # Location batch
   curl -i --location --request POST 'http://127.0.0.1:54321/functions/v1/api/locations/batch' \
-    --header 'X-API-Key: your-api-key' \
     --header 'Content-Type: application/json' \
     --data '{
       "device_id": "550e8400-e29b-41d4-a716-446655440000",

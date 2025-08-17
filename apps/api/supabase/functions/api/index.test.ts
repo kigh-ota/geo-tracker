@@ -54,8 +54,7 @@ Deno.test("POST /locations/batch - 位置情報バッチ送信が正常に動作
   const request = new Request("http://127.0.0.1:54321/api/locations/batch", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "X-API-Key": "test-api-key"
+      "Content-Type": "application/json"
     },
     body: JSON.stringify(requestBody)
   });

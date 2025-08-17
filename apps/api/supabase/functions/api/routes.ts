@@ -86,17 +86,6 @@ export async function handleRequest(request: Request): Promise<Response> {
 
   if (path === "/locations/batch" && request.method === "POST") {
     try {
-      // APIキーの検証
-      const apiKey = request.headers.get("X-API-Key");
-      if (!apiKey) {
-        return new Response(
-          JSON.stringify({ error: "UNAUTHORIZED", message: "API key is required" }),
-          { 
-            status: 401,
-            headers: { "Content-Type": "application/json" } 
-          },
-        );
-      }
 
       // リクエストボディの解析
       const body: LocationBatchRequest = await request.json();
