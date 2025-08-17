@@ -19,8 +19,16 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function handleRequest(request: Request): Promise<Response> {
   const url = new URL(request.url);
-  const path = url.pathname.replace("/functions/v1/api", "");
+  let path = url.pathname;
+  if (path.startsWith("/api")) {
+    path = path.replace("/api", "");
+  }
   
+  // ルートパス "/" を "/health" などに正規化
+  if (path === "") {
+    path = "/";
+  }
+
   if (path === "/health" && request.method === "GET") {
     const response: HealthResponse = {
       status: "healthy",

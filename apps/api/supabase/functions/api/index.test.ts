@@ -9,7 +9,7 @@ type LocationBatchRequest = paths["/locations/batch"]["post"]["requestBody"]["co
 type LocationBatchResponse = paths["/locations/batch"]["post"]["responses"]["201"]["content"]["application/json"];
 
 Deno.test("GET /health - ヘルスチェックが正常に動作する", async () => {
-  const request = new Request("http://127.0.0.1:54321/functions/v1/api/health", {
+  const request = new Request("http://127.0.0.1:54321/api/health", {
     method: "GET",
   });
 
@@ -55,7 +55,7 @@ Deno.test("POST /locations/batch - 位置情報バッチ送信が正常に動作
     ]
   };
 
-  const request = new Request("http://127.0.0.1:54321/functions/v1/api/locations/batch", {
+  const request = new Request("http://127.0.0.1:54321/api/locations/batch", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
