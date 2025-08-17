@@ -1,3 +1,17 @@
 {
-  "imports": {}
+  "imports": {
+    "@supabase/functions-js": "jsr:@supabase/functions-js",
+    "@std/assert": "jsr:@std/assert",
+    "@std/testing": "jsr:@std/testing"
+  },
+  "tasks": {
+    "test": "deno test --allow-all",
+    "dev": "supabase functions serve",
+    "generate:types": "deno run -A npm:openapi-typescript ../../../shared/openapi.yml -o ../../../types/api.ts"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  }
 }
