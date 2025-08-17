@@ -36,10 +36,6 @@ Deno.test("GET /health - ヘルスチェックが正常に動作する", async (
 Deno.test("POST /locations/batch - 位置情報バッチ送信が正常に動作する", async () => {
   const requestBody: LocationBatchRequest = {
     device_id: "550e8400-e29b-41d4-a716-446655440000",
-    device_info: {
-      model: "iPhone14,2",
-      os_version: "iOS 17.0"
-    },
     locations: [
       {
         latitude: 35.6812,

@@ -38,7 +38,7 @@ export async function handleRequest(request: Request): Promise<Response> {
       if (error) {
         // 簡単なクエリでDB接続確認
         const { error: dbError } = await supabase
-          .from('devices')
+          .from('locations')
           .select('id')
           .limit(1);
         
@@ -100,7 +100,7 @@ export async function handleRequest(request: Request): Promise<Response> {
 
       // リクエストボディの解析
       const body: LocationBatchRequest = await request.json();
-      const { device_id, device_info, locations } = body;
+      const { device_id, locations } = body;
 
       // 基本的なバリデーション
       if (!device_id || !locations || !Array.isArray(locations) || locations.length === 0) {
@@ -113,34 +113,9 @@ export async function handleRequest(request: Request): Promise<Response> {
         );
       }
 
-      // デバイス情報をupsert
-      const { data: deviceData, error: deviceError } = await supabase
-        .from("devices")
-        .upsert(
-          {
-            device_id,
-            model: device_info?.model,
-            os_version: device_info?.os_version,
-          },
-          { onConflict: "device_id" }
-        )
-        .select()
-        .single();
-
-      if (deviceError) {
-        console.error("Device upsert error:", deviceError);
-        return new Response(
-          JSON.stringify({ error: "DATABASE_ERROR", message: "Failed to save device info" }),
-          { 
-            status: 500,
-            headers: { "Content-Type": "application/json" } 
-          },
-        );
-      }
-
       // 位置情報データの挿入準備
       const locationInserts = locations.map((location: Location) => ({
-        device_uuid: deviceData.id,
+        device_id,
         latitude: location.latitude,
         longitude: location.longitude,
         accuracy: location.accuracy,
