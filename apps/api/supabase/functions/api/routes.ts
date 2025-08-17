@@ -30,18 +30,58 @@ export async function handleRequest(request: Request): Promise<Response> {
   }
 
   if (path === "/health" && request.method === "GET") {
-    const response: HealthResponse = {
-      status: "healthy",
-      timestamp: new Date().toISOString(),
-    };
-    
-    return new Response(
-      JSON.stringify(response),
-      { 
-        status: 200,
-        headers: { "Content-Type": "application/json" } 
-      },
-    );
+    try {
+      // データベース疎通確認 (SELECT 1)
+      const { error } = await supabase.rpc('health_check');
+      
+      // エラーがある場合は代替手段でDB疎通確認
+      if (error) {
+        // 簡単なクエリでDB接続確認
+        const { error: dbError } = await supabase
+          .from('devices')
+          .select('id')
+          .limit(1);
+        
+        if (dbError) {
+          console.error('Database health check failed:', dbError);
+          return new Response(
+            JSON.stringify({
+              status: "unhealthy",
+              timestamp: new Date().toISOString(),
+            }),
+            { 
+              status: 503,
+              headers: { "Content-Type": "application/json" } 
+            },
+          );
+        }
+      }
+
+      const response: HealthResponse = {
+        status: "healthy",
+        timestamp: new Date().toISOString(),
+      };
+      
+      return new Response(
+        JSON.stringify(response),
+        { 
+          status: 200,
+          headers: { "Content-Type": "application/json" } 
+        },
+      );
+    } catch (error) {
+      console.error('Health check error:', error);
+      return new Response(
+        JSON.stringify({
+          status: "unhealthy",
+          timestamp: new Date().toISOString(),
+        }),
+        { 
+          status: 503,
+          headers: { "Content-Type": "application/json" } 
+        },
+      );
+    }
   }
 
   if (path === "/locations/batch" && request.method === "POST") {
