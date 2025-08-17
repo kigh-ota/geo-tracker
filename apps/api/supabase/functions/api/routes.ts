@@ -1,4 +1,14 @@
 import { createClient } from "jsr:@supabase/supabase-js@2";
+import type { paths, components } from "./types/api.ts";
+
+// 型エイリアス
+type LocationBatchRequest = paths["/locations/batch"]["post"]["requestBody"]["content"]["application/json"];
+type LocationBatchResponse = paths["/locations/batch"]["post"]["responses"]["201"]["content"]["application/json"];
+type HealthResponse = paths["/health"]["get"]["responses"]["200"]["content"]["application/json"];
+type ErrorResponse = paths["/locations/batch"]["post"]["responses"]["400"]["content"]["application/json"];
+type Location = components["schemas"]["Location"];
+type DeviceInfo = components["schemas"]["DeviceInfo"];
+type LocationBatch = components["schemas"]["LocationBatch"];
 
 // Supabaseクライアントの初期化
 const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "http://127.0.0.1:54321";
@@ -12,11 +22,13 @@ export async function handleRequest(request: Request): Promise<Response> {
   const path = url.pathname.replace("/functions/v1/api", "");
   
   if (path === "/health" && request.method === "GET") {
+    const response: HealthResponse = {
+      status: "healthy",
+      timestamp: new Date().toISOString(),
+    };
+    
     return new Response(
-      JSON.stringify({
-        status: "healthy",
-        timestamp: new Date().toISOString(),
-      }),
+      JSON.stringify(response),
       { 
         status: 200,
         headers: { "Content-Type": "application/json" } 
@@ -39,7 +51,7 @@ export async function handleRequest(request: Request): Promise<Response> {
       }
 
       // リクエストボディの解析
-      const body = await request.json();
+      const body: LocationBatchRequest = await request.json();
       const { device_id, device_info, locations } = body;
 
       // 基本的なバリデーション
@@ -79,7 +91,7 @@ export async function handleRequest(request: Request): Promise<Response> {
       }
 
       // 位置情報データの挿入準備
-      const locationInserts = locations.map((location: any) => ({
+      const locationInserts = locations.map((location: Location) => ({
         device_uuid: deviceData.id,
         latitude: location.latitude,
         longitude: location.longitude,
@@ -108,11 +120,13 @@ export async function handleRequest(request: Request): Promise<Response> {
         );
       }
 
+      const response: LocationBatchResponse = {
+        message: `Successfully recorded ${locations.length} locations`,
+        received_count: locations.length,
+      };
+
       return new Response(
-        JSON.stringify({
-          message: `Successfully recorded ${locations.length} locations`,
-          received_count: locations.length,
-        }),
+        JSON.stringify(response),
         { 
           status: 201,
           headers: { "Content-Type": "application/json" } 

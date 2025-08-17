@@ -1,5 +1,5 @@
 import { assertEquals, assertExists } from "@std/assert";
-import type { paths } from "../../../types/api.ts";
+import type { paths } from "./types/api.ts";
 import { handleRequest } from "./routes.ts";
 
 // ヘルスチェック用の型

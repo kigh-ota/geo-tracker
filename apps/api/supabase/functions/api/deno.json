@@ -8,7 +8,7 @@
   "tasks": {
     "test": "deno test --allow-all",
     "dev": "supabase functions serve",
-    "generate:types": "deno run -A npm:openapi-typescript ../../../shared/openapi.yml -o ../../../types/api.ts"
+    "generate:types": "deno run -A npm:openapi-typescript ../../../../../shared/openapi.yml -o ./types/api.ts"
   },
   "compilerOptions": {
     "strict": true,
