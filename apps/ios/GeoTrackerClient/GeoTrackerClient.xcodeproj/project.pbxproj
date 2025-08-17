@@ -49,6 +49,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				APIService.swift,
+				ConfigurationService.swift,
 				LocationDataMapper.swift,
 				LocationTracker.swift,
 			);

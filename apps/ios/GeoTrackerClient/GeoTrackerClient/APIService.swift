@@ -49,9 +49,6 @@ class APIService {
         case .badRequest:
             print("DEBUG: APIService - Error: 400 Bad Request")
             return false
-        case .unauthorized:
-            print("DEBUG: APIService - Error: 401 Unauthorized")
-            return false
         case .internalServerError:
             print("DEBUG: APIService - Error: 500 Internal Server Error")
             return false
