@@ -10,5 +10,8 @@ jobs:
   mock-api:
     uses: ./.github/workflows/mock-api.yml
   
+  api:
+    uses: ./.github/workflows/api.yml
+  
   ios:
     uses: ./.github/workflows/ios.yml
