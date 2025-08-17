@@ -7,6 +7,7 @@
   },
   "tasks": {
     "test": "deno test --allow-all",
+    "typecheck": "deno check '**/*.ts'",
     "dev": "supabase functions serve",
     "generate:types": "deno run -A npm:openapi-typescript ../../../../../shared/openapi.yml -o ./types/api.ts"
   },
