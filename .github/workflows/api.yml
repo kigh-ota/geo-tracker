@@ -1,0 +1,42 @@
+name: API CI
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Start Supabase local development
+        run: cd apps/api && supabase start
+        
+      - name: Wait for services to be ready
+        run: sleep 10
+
+      - name: Generate API types
+        run: cd apps/api/supabase/functions/api && deno task generate:types
+
+      - name: Run type check
+        run: cd apps/api/supabase/functions/api && deno task typecheck
+
+      - name: Run tests
+        run: cd apps/api/supabase/functions/api && deno task test
+
+      - name: Stop Supabase
+        if: always()
+        run: cd apps/api && supabase stop
