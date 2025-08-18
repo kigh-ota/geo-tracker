@@ -13,9 +13,11 @@ import HTTPTypes
 class APIService {
     let serverURL: String
     private let client: Client
+    private let configuration: ConfigurationService?
     
     init(serverURL: String, transport: (any ClientTransport)? = nil) {
         self.serverURL = serverURL
+        self.configuration = nil
         
         // OpenAPIクライアントを初期化
         guard let url = URL(string: serverURL) else {
@@ -25,6 +27,32 @@ class APIService {
         self.client = Client(
             serverURL: url,
             transport: transport ?? URLSessionTransport()
+        )
+    }
+    
+    init(configuration: ConfigurationService, transport: (any ClientTransport)? = nil) {
+        self.serverURL = configuration.serverURL
+        self.configuration = configuration
+        
+        // OpenAPIクライアントを初期化
+        guard let url = URL(string: configuration.serverURL) else {
+            fatalError("Invalid server URL: \(configuration.serverURL)")
+        }
+        
+        let finalTransport: any ClientTransport
+        if let customTransport = transport {
+            finalTransport = customTransport
+        } else {
+            // Authorizationヘッダーを自動的に追加するカスタムトランスポート
+            finalTransport = AuthorizationHeaderTransport(
+                baseTransport: URLSessionTransport(),
+                authorizationToken: configuration.authorizationToken
+            )
+        }
+        
+        self.client = Client(
+            serverURL: url,
+            transport: finalTransport
         )
     }
     
@@ -84,5 +112,37 @@ enum APIError: Error {
         case .invalidResponse:
             return "Invalid response format"
         }
+    }
+}
+
+/// Authorizationヘッダーを自動的に追加するカスタムトランスポート
+struct AuthorizationHeaderTransport: ClientTransport {
+    private let baseTransport: any ClientTransport
+    private let authorizationToken: String?
+    
+    init(baseTransport: any ClientTransport, authorizationToken: String?) {
+        self.baseTransport = baseTransport
+        self.authorizationToken = authorizationToken
+    }
+    
+    func send(
+        _ request: HTTPRequest,
+        body: HTTPBody?,
+        baseURL: URL,
+        operationID: String
+    ) async throws -> (HTTPResponse, HTTPBody?) {
+        var modifiedRequest = request
+        
+        // Authorizationヘッダーを追加
+        if let token = authorizationToken {
+            modifiedRequest.headerFields[.authorization] = "Bearer \(token)"
+        }
+        
+        return try await baseTransport.send(
+            modifiedRequest,
+            body: body,
+            baseURL: baseURL,
+            operationID: operationID
+        )
     }
 }
