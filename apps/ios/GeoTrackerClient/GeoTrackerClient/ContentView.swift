@@ -122,9 +122,8 @@ struct ContentView: View {
                                 deviceId = UUID().uuidString
                             }
                             let locationDataMapper = LocationDataMapper(deviceId: deviceId)
-                            let baseURL = ProcessInfo.processInfo.environment["API_SERVER_URL"] ?? "http://localhost:8000"
-                            let serverURL = "\(baseURL)/v1"
-                            let apiService = APIService(serverURL: serverURL)
+                            let config = ConfigurationService()
+                            let apiService = APIService(configuration: config)
                             
                             let batch = locationDataMapper.createBatch(from: [location])
                             let success = try await apiService.sendLocationBatch(batch)
