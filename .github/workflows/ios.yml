@@ -17,6 +17,22 @@ jobs:
         with:
           xcode-version: latest-stable
         
+      - name: Create dummy xcconfig files for CI
+        run: |
+          cd apps/ios/GeoTrackerClient
+          # CI用のダミーProduction.xcconfigファイルを作成
+          cat > Production.xcconfig << 'EOF'
+          // CI用ダミー設定
+          API_SERVER_URL = http://localhost:8000/v1
+          API_AUTHORIZATION_TOKEN = ci-dummy-token
+          EOF
+          # Development.xcconfigも念のため作成
+          cat > Development.xcconfig << 'EOF'
+          // CI用ダミー設定
+          API_SERVER_URL = http://localhost:8000/v1
+          API_AUTHORIZATION_TOKEN = ci-dummy-token
+          EOF
+        
       - name: List available simulators (debug)
         run: xcrun simctl list devices
         
