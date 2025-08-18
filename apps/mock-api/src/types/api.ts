@@ -164,7 +164,7 @@ export interface operations {
         };
         responses: {
             /** @description 位置情報が正常に記録されました */
-            201: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -179,6 +179,15 @@ export interface operations {
             };
             /** @description リクエストが不正です */
             400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description 認証が必要です */
+            401: {
                 headers: {
                     [name: string]: unknown;
                 };
