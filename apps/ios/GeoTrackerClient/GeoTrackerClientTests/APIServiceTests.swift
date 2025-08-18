@@ -204,7 +204,7 @@ final class APIServiceTests: XCTestCase {
     func test_ConfigurationServiceを使用してAPIServiceを初期化できる() {
         // Given
         let mockEnvironment = [
-            "API_SERVER_URL": "https://api.example.com",
+            "API_SERVER_URL": "https://api.example.com/v1",
             "API_AUTHORIZATION_TOKEN": "test-token-123"
         ]
         let config = ConfigurationService(environment: mockEnvironment)

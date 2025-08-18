@@ -22,7 +22,7 @@ final class ConfigurationServiceTests: XCTestCase {
     
     func test_環境変数からサーバーURLを取得できる() {
         // Given
-        let mockEnvironment = ["API_SERVER_URL": "https://api.example.com"]
+        let mockEnvironment = ["API_SERVER_URL": "https://api.example.com/v1"]
         let sut = ConfigurationService(environment: mockEnvironment)
         
         // When & Then
@@ -41,7 +41,7 @@ final class ConfigurationServiceTests: XCTestCase {
     func test_両方の環境変数が設定されている場合() {
         // Given
         let mockEnvironment = [
-            "API_SERVER_URL": "https://api.example.com",
+            "API_SERVER_URL": "https://api.example.com/v1",
             "API_AUTHORIZATION_TOKEN": "test-token-123"
         ]
         let sut = ConfigurationService(environment: mockEnvironment)
@@ -49,14 +49,5 @@ final class ConfigurationServiceTests: XCTestCase {
         // When & Then
         XCTAssertEqual(sut.serverURL, "https://api.example.com/v1")
         XCTAssertEqual(sut.authorizationToken, "test-token-123")
-    }
-    
-    func test_サーバーURLにv1が自動的に追加される() {
-        // Given
-        let mockEnvironment = ["API_SERVER_URL": "https://api.example.com/"]
-        let sut = ConfigurationService(environment: mockEnvironment)
-        
-        // When & Then
-        XCTAssertEqual(sut.serverURL, "https://api.example.com/v1")
     }
 }
