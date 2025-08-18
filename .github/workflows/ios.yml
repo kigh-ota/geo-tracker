@@ -25,6 +25,7 @@ jobs:
           cd apps/ios/GeoTrackerClient
           xcodebuild test \
             -scheme GeoTrackerClient \
+            -configuration Debug \
             -destination 'platform=iOS Simulator,name=iPhone 16' \
             -enableCodeCoverage YES \
             -skipPackagePluginValidation
