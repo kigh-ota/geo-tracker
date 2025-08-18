@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var authorizationStatus: CLAuthorizationStatus = .notDetermined
     @State private var logEntries: [LogEntry] = []
     private let maxLogEntries = 50
+    private let config = ConfigurationService()
     
     var body: some View {
         VStack(spacing: 30) {
@@ -67,6 +68,35 @@ struct ContentView: View {
                 .background(Color.gray.opacity(0.1))
                 .cornerRadius(10)
             }
+            
+            // 設定情報表示
+            VStack(alignment: .leading, spacing: 8) {
+                Text("設定情報")
+                    .font(.headline)
+                
+                HStack {
+                    Text("API Server:")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Spacer()
+                    Text(config.serverURL)
+                        .font(.caption)
+                        .foregroundColor(.primary)
+                }
+                
+                HStack {
+                    Text("Auth Token:")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Spacer()
+                    Text(config.maskedAuthorizationToken)
+                        .font(.caption)
+                        .foregroundColor(.primary)
+                }
+            }
+            .padding()
+            .background(Color.gray.opacity(0.05))
+            .cornerRadius(10)
             
             // 送信履歴ログ
             VStack(alignment: .leading, spacing: 10) {
@@ -122,7 +152,6 @@ struct ContentView: View {
                                 deviceId = UUID().uuidString
                             }
                             let locationDataMapper = LocationDataMapper(deviceId: deviceId)
-                            let config = ConfigurationService()
                             let apiService = APIService(configuration: config)
                             
                             let batch = locationDataMapper.createBatch(from: [location])
