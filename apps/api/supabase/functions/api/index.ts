@@ -1,19 +1,13 @@
 // Geo Tracker API - Supabase Edge Function
 // Setup type definitions for built-in Supabase Runtime APIs
-import "jsr:@supabase/functions-js/edge-runtime.d.ts"
-import { handleRequest } from "./routes.ts"
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { handleRequest } from "./routes.ts";
 
-console.log("Geo Tracker API starting...")
+console.log("Geo Tracker API starting...");
 
 Deno.serve(async (req: Request) => {
-  // return await handleRequest(req)
-    return new Response(
-    JSON.stringify({
-      headers: Object.fromEntries(req.headers),
-    }, null, 2),
-    { status: 200, headers: { "Content-Type": "application/json" } }
-  );
-})
+  return await handleRequest(req);
+});
 
 /* To invoke locally:
 
