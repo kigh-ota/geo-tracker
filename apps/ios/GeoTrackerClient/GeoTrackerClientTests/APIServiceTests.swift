@@ -97,7 +97,7 @@ final class APIServiceTests: XCTestCase {
             // 成功レスポンス
             let response = HTTPURLResponse(
                 url: request.url!,
-                statusCode: 201,
+                statusCode: 200,
                 httpVersion: nil,
                 headerFields: ["Content-Type": "application/json"]
             )!

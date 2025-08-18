@@ -3,7 +3,7 @@ import type { paths, components } from "./types/api.ts";
 
 // 型エイリアス
 type LocationBatchRequest = paths["/locations/batch"]["post"]["requestBody"]["content"]["application/json"];
-type LocationBatchResponse = paths["/locations/batch"]["post"]["responses"]["201"]["content"]["application/json"];
+type LocationBatchResponse = paths["/locations/batch"]["post"]["responses"]["200"]["content"]["application/json"];
 type HealthResponse = paths["/health"]["get"]["responses"]["200"]["content"]["application/json"];
 type ErrorResponse = paths["/locations/batch"]["post"]["responses"]["400"]["content"]["application/json"];
 type Location = components["schemas"]["Location"];
@@ -140,7 +140,7 @@ export async function handleRequest(request: Request): Promise<Response> {
       return new Response(
         JSON.stringify(response),
         { 
-          status: 201,
+          status: 200,
           headers: { "Content-Type": "application/json" } 
         },
       );

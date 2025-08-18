@@ -71,12 +71,15 @@ class APIService {
         let response = try await client.postLocationsBatch(input)
         
         switch response {
-        case .created:
-            print("DEBUG: APIService - Success: 201 Created")
+        case .ok:
+            print("DEBUG: APIService - Success: 200 OK")
             return true
         case .badRequest:
             print("DEBUG: APIService - Error: 400 Bad Request")
             return false
+        case .unauthorized:
+            print("DEBUG: APIService - Error: 401 Unauthorized")
+            throw APIError.unauthorized
         case .internalServerError:
             print("DEBUG: APIService - Error: 500 Internal Server Error")
             return false
@@ -104,6 +107,7 @@ class APIService {
 enum APIError: Error {
     case unexpectedStatusCode(Int)
     case invalidResponse
+    case unauthorized
     
     var localizedDescription: String {
         switch self {
@@ -111,6 +115,8 @@ enum APIError: Error {
             return "Unexpected status code: \(code)"
         case .invalidResponse:
             return "Invalid response format"
+        case .unauthorized:
+            return "Authentication required"
         }
     }
 }

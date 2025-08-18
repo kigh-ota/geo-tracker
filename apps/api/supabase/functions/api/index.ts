@@ -6,7 +6,13 @@ import { handleRequest } from "./routes.ts"
 console.log("Geo Tracker API starting...")
 
 Deno.serve(async (req: Request) => {
-  return await handleRequest(req)
+  // return await handleRequest(req)
+    return new Response(
+    JSON.stringify({
+      headers: Object.fromEntries(req.headers),
+    }, null, 2),
+    { status: 200, headers: { "Content-Type": "application/json" } }
+  );
 })
 
 /* To invoke locally:
