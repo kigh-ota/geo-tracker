@@ -12,11 +12,14 @@ class ConfigurationService {
     let authorizationToken: String?
     
     init(environment: [String: String] = ProcessInfo.processInfo.environment) {
-        // サーバーURLの設定
-        self.serverURL = environment["API_SERVER_URL"] ?? "http://localhost:8000/v1"
+        // サーバーURLの設定（優先順位: 環境変数 → Info.plist → デフォルト）
+        self.serverURL = environment["API_SERVER_URL"]
+                        ?? Bundle.main.infoDictionary?["API_SERVER_URL"] as? String 
+                        ?? "http://localhost:8000/v1"
         
-        // Authorizationトークンの設定
+        // Authorizationトークンの設定（優先順位: 環境変数 → Info.plist）
         self.authorizationToken = environment["API_AUTHORIZATION_TOKEN"]
+                                ?? Bundle.main.infoDictionary?["API_AUTHORIZATION_TOKEN"] as? String
     }
     
     /// トークンを一部マスクして表示用文字列を取得

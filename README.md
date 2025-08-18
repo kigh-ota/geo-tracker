@@ -39,7 +39,7 @@
   - トラッキングの開始/終了
   - 情報送信履歴ログ
 
-### 環境変数
+### 環境設定
 
 iOSアプリは以下の環境変数で設定を変更できます:
 
@@ -47,6 +47,33 @@ iOSアプリは以下の環境変数で設定を変更できます:
 |------------|------|------------|
 | `API_SERVER_URL` | APIサーバーのURL（完全なURL） | `http://localhost:8000/v1` |
 | `API_AUTHORIZATION_TOKEN` | Authorization HTTPヘッダーに含めるBearerトークン | なし |
+
+#### 設定方法
+
+**開発時（Xcodeから実行）:**
+- Xcodeのスキーマで環境変数を設定
+
+**実機単体起動時（Xcodeから切断後）:**
+1. 初回セットアップ時に以下の設定ファイルを作成：
+   ```bash
+   # 開発用設定
+   cp apps/ios/GeoTrackerClient/Config/Development.xcconfig.template \
+      apps/ios/GeoTrackerClient/Config/Development.xcconfig
+   
+   # 本番用設定  
+   cp apps/ios/GeoTrackerClient/Config/Production.xcconfig.template \
+      apps/ios/GeoTrackerClient/Config/Production.xcconfig
+   ```
+
+2. 作成した`.xcconfig`ファイルの値を実際のAPIサーバー情報に変更
+
+3. Xcodeで以下の設定：
+   - プロジェクト設定 > Info タブ > Custom iOS Target Properties に項目追加：
+     - `API_SERVER_URL`: `$(API_SERVER_URL)`
+     - `API_AUTHORIZATION_TOKEN`: `$(API_AUTHORIZATION_TOKEN)`
+   - プロジェクト設定 > Build Settings タブ > Configurations で作成した`.xcconfig`ファイルを指定
+
+**注意：** `.xcconfig`ファイルは機密情報を含むためGitから除外されています。各開発者・環境で個別に設定してください。
 
 #### 設定例
 
