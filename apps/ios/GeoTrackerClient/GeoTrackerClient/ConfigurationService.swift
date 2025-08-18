@@ -13,18 +13,13 @@ class ConfigurationService {
     
     init(environment: [String: String] = ProcessInfo.processInfo.environment) {
         // サーバーURLの設定（優先順位: 環境変数 → Info.plist → デフォルト）
-        let envServerURL = environment["API_SERVER_URL"]?.isEmpty == false ? environment["API_SERVER_URL"] : nil
-        let plistServerURL = Bundle.main.infoDictionary?["API_SERVER_URL"] as? String
-        let validPlistServerURL = plistServerURL?.isEmpty == false && plistServerURL?.hasPrefix("$(") == false ? plistServerURL : nil
-        
-        self.serverURL = envServerURL ?? validPlistServerURL ?? "http://localhost:8000/v1"
+        self.serverURL = environment["API_SERVER_URL"]
+                        ?? Bundle.main.infoDictionary?["API_SERVER_URL"] as? String 
+                        ?? "http://localhost:8000/v1"
         
         // Authorizationトークンの設定（優先順位: 環境変数 → Info.plist）
-        let envToken = environment["API_AUTHORIZATION_TOKEN"]?.isEmpty == false ? environment["API_AUTHORIZATION_TOKEN"] : nil
-        let plistToken = Bundle.main.infoDictionary?["API_AUTHORIZATION_TOKEN"] as? String
-        let validPlistToken = plistToken?.isEmpty == false && plistToken?.hasPrefix("$(") == false ? plistToken : nil
-        
-        self.authorizationToken = envToken ?? validPlistToken
+        self.authorizationToken = environment["API_AUTHORIZATION_TOKEN"]
+                                ?? Bundle.main.infoDictionary?["API_AUTHORIZATION_TOKEN"] as? String
     }
     
     /// トークンを一部マスクして表示用文字列を取得
