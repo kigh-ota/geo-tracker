@@ -39,6 +39,30 @@
   - トラッキングの開始/終了
   - 情報送信履歴ログ
 
+### 環境変数
+
+iOSアプリは以下の環境変数で設定を変更できます:
+
+| 環境変数名 | 説明 | デフォルト値 |
+|------------|------|------------|
+| `API_SERVER_URL` | APIサーバーのURL（完全なURL） | `http://localhost:8000/v1` |
+| `API_AUTHORIZATION_TOKEN` | Authorization HTTPヘッダーに含めるBearerトークン | なし |
+
+#### 設定例
+
+```bash
+# APIサーバーのURLを変更
+export API_SERVER_URL="https://api.example.com/v1"
+
+# Authorizationヘッダーを追加
+export API_AUTHORIZATION_TOKEN="your-bearer-token-here"
+```
+
+Xcodeでの設定:
+1. Product > Scheme > Edit Scheme...
+2. Run > Arguments > Environment Variables
+3. 環境変数を追加
+
 ## 分析
 
 TBD。候補
