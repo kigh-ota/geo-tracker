@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>API_AUTHORIZATION_TOKEN</key>
+	<string>$(API_AUTHORIZATION_TOKEN)</string>
+	<key>API_SERVER_URL</key>
+	<string>$(API_SERVER_URL)</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

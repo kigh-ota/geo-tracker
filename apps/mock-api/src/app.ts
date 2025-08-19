@@ -47,12 +47,12 @@ export function createApp(): express.Application {
       console.log(`Device info: ${locationBatch.device_info.model} (${locationBatch.device_info.os_version})`);
     }
     
-    const response: operations['postLocationsBatch']['responses']['201']['content']['application/json'] = {
+    const response: operations['postLocationsBatch']['responses']['200']['content']['application/json'] = {
       message: `Successfully recorded ${locationsCount} locations`,
       received_count: locationsCount
     };
     
-    res.status(201).json(response);
+    res.status(200).json(response);
   });
   
   return app;

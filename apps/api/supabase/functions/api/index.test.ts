@@ -6,7 +6,7 @@ import { handleRequest } from "./routes.ts";
 type HealthResponse = paths["/health"]["get"]["responses"]["200"]["content"]["application/json"];
 // 位置情報バッチ用の型
 type LocationBatchRequest = paths["/locations/batch"]["post"]["requestBody"]["content"]["application/json"];
-type LocationBatchResponse = paths["/locations/batch"]["post"]["responses"]["201"]["content"]["application/json"];
+type LocationBatchResponse = paths["/locations/batch"]["post"]["responses"]["200"]["content"]["application/json"];
 
 Deno.test("GET /health - ヘルスチェックが正常に動作する", async () => {
   const request = new Request("http://127.0.0.1:54321/api/health", {
@@ -63,7 +63,7 @@ Deno.test("POST /locations/batch - 位置情報バッチ送信が正常に動作
   const response = await handleRequest(request);
 
   // ステータスコードの確認
-  assertEquals(response.status, 201);
+  assertEquals(response.status, 200);
 
   // レスポンスヘッダーの確認
   assertEquals(response.headers.get("Content-Type"), "application/json");

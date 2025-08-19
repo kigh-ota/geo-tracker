@@ -26,11 +26,11 @@ describe('POST /v1/locations/batch', () => {
     ]
   };
 
-  it('should accept valid location batch and return 201', async () => {
+  it('should accept valid location batch and return 200', async () => {
     const response = await request(app)
       .post('/v1/locations/batch')
       .send(validLocationBatch)
-      .expect(201);
+      .expect(200);
 
     expect(response.body).toEqual({
       message: "Successfully recorded 1 locations",
@@ -55,7 +55,7 @@ describe('POST /v1/locations/batch', () => {
     const response = await request(app)
       .post('/v1/locations/batch')
       .send(multipleBatch)
-      .expect(201);
+      .expect(200);
 
     expect(response.body).toEqual({
       message: "Successfully recorded 2 locations",
@@ -69,7 +69,7 @@ describe('POST /v1/locations/batch', () => {
     await request(app)
       .post('/v1/locations/batch')
       .send(validLocationBatch)
-      .expect(201);
+      .expect(200);
 
     expect(consoleSpy).toHaveBeenCalledWith(
       expect.stringContaining('Device ID: 550e8400-e29b-41d4-a716-446655440000')

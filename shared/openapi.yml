@@ -56,7 +56,7 @@ paths:
                       accuracy: 10.0
                       timestamp: "2024-01-15T10:31:00Z"
       responses:
-        '201':
+        '200':
           description: 位置情報が正常に記録されました
           content:
             application/json:
@@ -71,6 +71,12 @@ paths:
                     example: 2
         '400':
           description: リクエストが不正です
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: 認証が必要です
           content:
             application/json:
               schema:

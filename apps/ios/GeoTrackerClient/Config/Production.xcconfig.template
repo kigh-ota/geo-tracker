@@ -1,0 +1,8 @@
+// 本番用設定テンプレート  
+// このファイルをProduction.xcconfigにコピーして実際の値を設定してください
+
+// APIサーバーURL (本番環境)
+API_SERVER_URL = https://your-production-api.com/v1
+
+// 認証トークン (本番用)
+API_AUTHORIZATION_TOKEN = your-prod-token-here

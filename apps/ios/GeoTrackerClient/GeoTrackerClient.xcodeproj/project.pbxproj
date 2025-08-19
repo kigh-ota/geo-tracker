@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840AB82F2E5393220048D1E5 /* Production.xcconfig.template in Resources */ = {isa = PBXBuildFile; fileRef = 840AB82D2E5393220048D1E5 /* Production.xcconfig.template */; };
+		840AB8312E5393220048D1E5 /* Development.xcconfig.template in Resources */ = {isa = PBXBuildFile; fileRef = 840AB82B2E5393220048D1E5 /* Development.xcconfig.template */; };
+		840AB8322E5393220048D1E5 /* Production.xcconfig.template in Resources */ = {isa = PBXBuildFile; fileRef = 840AB82D2E5393220048D1E5 /* Production.xcconfig.template */; };
+		840AB8342E5393220048D1E5 /* Development.xcconfig.template in Resources */ = {isa = PBXBuildFile; fileRef = 840AB82B2E5393220048D1E5 /* Development.xcconfig.template */; };
+		840AB89C2E539CE70048D1E5 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 840AB89B2E539CE70048D1E5 /* Production.xcconfig */; };
+		840AB89D2E539CE70048D1E5 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 840AB89B2E539CE70048D1E5 /* Production.xcconfig */; };
 		84762C692E4F5E100007C045 /* openapi.yml in Sources */ = {isa = PBXBuildFile; fileRef = 84762C682E4F5E100007C045 /* openapi.yml */; };
 		84762C6B2E4F5E210007C045 /* openapi-generator-config.yml in Sources */ = {isa = PBXBuildFile; fileRef = 84762C6A2E4F5E190007C045 /* openapi-generator-config.yml */; };
 		84762C6F2E4F5F220007C045 /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 84762C6E2E4F5F220007C045 /* OpenAPIRuntime */; };
@@ -37,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		840AB82B2E5393220048D1E5 /* Development.xcconfig.template */ = {isa = PBXFileReference; lastKnownFileType = text; path = Development.xcconfig.template; sourceTree = "<group>"; };
+		840AB82D2E5393220048D1E5 /* Production.xcconfig.template */ = {isa = PBXFileReference; lastKnownFileType = text; path = Production.xcconfig.template; sourceTree = "<group>"; };
+		840AB89B2E539CE70048D1E5 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		843564832E4E224C009021B7 /* GeoTrackerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoTrackerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		843564902E4E224D009021B7 /* GeoTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8435649A2E4E224D009021B7 /* GeoTrackerClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoTrackerClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +58,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				APIService.swift,
+				ConfigurationService.swift,
 				LocationDataMapper.swift,
 				LocationTracker.swift,
 			);
@@ -116,6 +126,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840AB82E2E5393220048D1E5 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				840AB82B2E5393220048D1E5 /* Development.xcconfig.template */,
+				840AB82D2E5393220048D1E5 /* Production.xcconfig.template */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		8435647A2E4E224C009021B7 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +145,8 @@
 				8435649D2E4E224D009021B7 /* GeoTrackerClientUITests */,
 				84762CDC2E5037090007C045 /* Frameworks */,
 				843564842E4E224C009021B7 /* Products */,
+				840AB82E2E5393220048D1E5 /* Config */,
+				840AB89B2E539CE70048D1E5 /* Production.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -279,6 +300,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840AB8322E5393220048D1E5 /* Production.xcconfig.template in Resources */,
+				840AB89C2E539CE70048D1E5 /* Production.xcconfig in Resources */,
+				840AB8342E5393220048D1E5 /* Development.xcconfig.template in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +310,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840AB82F2E5393220048D1E5 /* Production.xcconfig.template in Resources */,
+				840AB8312E5393220048D1E5 /* Development.xcconfig.template in Resources */,
+				840AB89D2E539CE70048D1E5 /* Production.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +375,135 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		840AB83D2E53939B0048D1E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 840AB89B2E539CE70048D1E5 /* Production.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Release;
+		};
+		840AB83E2E53939B0048D1E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GeoTrackerClient/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "位置情報を継続的に記録し、サーバーに送信するためにバックグラウンドでの位置情報取得が必要です。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を記録し、サーバーに送信するために使用します。";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClient";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		840AB83F2E53939B0048D1E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		840AB8402E53939B0048D1E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClientUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GeoTrackerClient;
+			};
+			name = Release;
+		};
 		843564A22E4E224E009021B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -411,62 +567,6 @@
 			};
 			name = Debug;
 		};
-		843564A32E4E224E009021B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		843564A52E4E224E009021B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -498,37 +598,6 @@
 			};
 			name = Debug;
 		};
-		843564A62E4E224E009021B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GeoTrackerClient/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "位置情報を継続的に記録し、サーバーに送信するためにバックグラウンドでの位置情報取得が必要です。";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を記録し、サーバーに送信するために使用します。";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClient";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		843564A82E4E224E009021B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -545,23 +614,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
-		};
-		843564A92E4E224E009021B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClientTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
 		};
 		843564AB2E4E224E009021B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -580,23 +632,6 @@
 			};
 			name = Debug;
 		};
-		843564AC2E4E224E009021B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZCL9Z9CKJ3;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kigh-ota.GeoTrackerClientUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = GeoTrackerClient;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -604,37 +639,37 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				843564A22E4E224E009021B7 /* Debug */,
-				843564A32E4E224E009021B7 /* Release */,
+				840AB83D2E53939B0048D1E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		843564A42E4E224E009021B7 /* Build configuration list for PBXNativeTarget "GeoTrackerClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				843564A52E4E224E009021B7 /* Debug */,
-				843564A62E4E224E009021B7 /* Release */,
+				840AB83E2E53939B0048D1E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		843564A72E4E224E009021B7 /* Build configuration list for PBXNativeTarget "GeoTrackerClientTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				843564A82E4E224E009021B7 /* Debug */,
-				843564A92E4E224E009021B7 /* Release */,
+				840AB83F2E53939B0048D1E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		843564AA2E4E224E009021B7 /* Build configuration list for PBXNativeTarget "GeoTrackerClientUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				843564AB2E4E224E009021B7 /* Debug */,
-				843564AC2E4E224E009021B7 /* Release */,
+				840AB8402E53939B0048D1E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

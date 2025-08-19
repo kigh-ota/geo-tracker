@@ -13,9 +13,11 @@ import HTTPTypes
 class APIService {
     let serverURL: String
     private let client: Client
+    private let configuration: ConfigurationService?
     
     init(serverURL: String, transport: (any ClientTransport)? = nil) {
         self.serverURL = serverURL
+        self.configuration = nil
         
         // OpenAPIクライアントを初期化
         guard let url = URL(string: serverURL) else {
@@ -25,6 +27,32 @@ class APIService {
         self.client = Client(
             serverURL: url,
             transport: transport ?? URLSessionTransport()
+        )
+    }
+    
+    init(configuration: ConfigurationService, transport: (any ClientTransport)? = nil) {
+        self.serverURL = configuration.serverURL
+        self.configuration = configuration
+        
+        // OpenAPIクライアントを初期化
+        guard let url = URL(string: configuration.serverURL) else {
+            fatalError("Invalid server URL: \(configuration.serverURL)")
+        }
+        
+        let finalTransport: any ClientTransport
+        if let customTransport = transport {
+            finalTransport = customTransport
+        } else {
+            // Authorizationヘッダーを自動的に追加するカスタムトランスポート
+            finalTransport = AuthorizationHeaderTransport(
+                baseTransport: URLSessionTransport(),
+                authorizationToken: configuration.authorizationToken
+            )
+        }
+        
+        self.client = Client(
+            serverURL: url,
+            transport: finalTransport
         )
     }
     
@@ -43,15 +71,15 @@ class APIService {
         let response = try await client.postLocationsBatch(input)
         
         switch response {
-        case .created:
-            print("DEBUG: APIService - Success: 201 Created")
+        case .ok:
+            print("DEBUG: APIService - Success: 200 OK")
             return true
         case .badRequest:
             print("DEBUG: APIService - Error: 400 Bad Request")
             return false
         case .unauthorized:
             print("DEBUG: APIService - Error: 401 Unauthorized")
-            return false
+            throw APIError.unauthorized
         case .internalServerError:
             print("DEBUG: APIService - Error: 500 Internal Server Error")
             return false
@@ -79,6 +107,7 @@ class APIService {
 enum APIError: Error {
     case unexpectedStatusCode(Int)
     case invalidResponse
+    case unauthorized
     
     var localizedDescription: String {
         switch self {
@@ -86,6 +115,40 @@ enum APIError: Error {
             return "Unexpected status code: \(code)"
         case .invalidResponse:
             return "Invalid response format"
+        case .unauthorized:
+            return "Authentication required"
         }
+    }
+}
+
+/// Authorizationヘッダーを自動的に追加するカスタムトランスポート
+struct AuthorizationHeaderTransport: ClientTransport {
+    private let baseTransport: any ClientTransport
+    private let authorizationToken: String?
+    
+    init(baseTransport: any ClientTransport, authorizationToken: String?) {
+        self.baseTransport = baseTransport
+        self.authorizationToken = authorizationToken
+    }
+    
+    func send(
+        _ request: HTTPRequest,
+        body: HTTPBody?,
+        baseURL: URL,
+        operationID: String
+    ) async throws -> (HTTPResponse, HTTPBody?) {
+        var modifiedRequest = request
+        
+        // Authorizationヘッダーを追加
+        if let token = authorizationToken {
+            modifiedRequest.headerFields[.authorization] = "Bearer \(token)"
+        }
+        
+        return try await baseTransport.send(
+            modifiedRequest,
+            body: body,
+            baseURL: baseURL,
+            operationID: operationID
+        )
     }
 }
